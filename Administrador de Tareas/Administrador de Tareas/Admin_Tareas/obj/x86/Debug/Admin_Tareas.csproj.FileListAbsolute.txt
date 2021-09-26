@@ -5,3 +5,10 @@ C:\Users\Windows 10\Desktop\Administrador de Tareas\Administrador de Tareas\Admi
 C:\Users\Windows 10\Desktop\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.csproj.GenerateResource.Cache
 C:\Users\Windows 10\Desktop\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.exe
 C:\Users\Windows 10\Desktop\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.pdb
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.exe
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.pdb
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\bin\Debug\Admin_Tareas.exe
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\bin\Debug\Admin_Tareas.pdb
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.Properties.Resources.resources
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.Tareas.resources
+C:\Users\Windows 10\Desktop\TA\Administrador de Tareas\Administrador de Tareas\Admin_Tareas\obj\x86\Debug\Admin_Tareas.csproj.GenerateResource.Cache

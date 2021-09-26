@@ -11,7 +11,7 @@ using System.Diagnostics;
 namespace Admin_Tareas
 {
 
-    /*ADMINISTRADOR DE TAREAS EN C#, DESARROLLADOR: DIEGO VÁSQUEZ, FUE POSIBLE GRACIAS A LA LIBRERÍA System.Diagnostics y la clase Process, link de consulta: https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process?view=net-5.0, EN VISTA DE LA COPIA DE OTROS SOFTWARES, TOMÉ LA INICIATIVA DE HACERLO SOLO Y ENTREGAR ALGO POR MÉRITO PROPIO*/
+    /*ADMINISTRADOR DE TAREAS EN C#, DESARROLLADOR: GRUPO 3 SO1 [Diego, Nayre, Santiago, Carlos Castillo], FUE POSIBLE GRACIAS A LA LIBRERÍA System.Diagnostics y la clase Process, link de consulta: https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process?view=net-5.0, SOFTWARE TOTALMENTE NUESTRO CON AYUDA DE OTROS SOFTWARES EN CUANTO A FUNCIONES*/
 
     public partial class Tareas : Form
     {
@@ -40,7 +40,7 @@ namespace Admin_Tareas
             MessageBox.Show(index_proceso.ToString());
         }
 
-        //OBTENEMOS LOS PROCESOS
+        //OBTENEMOS LOS PROCESOS [DIEGO]
         private void Listar_Procesos()
         {
             if (Lista_Procesos.Rows.Count >= 0)
@@ -84,7 +84,7 @@ namespace Admin_Tareas
             lblRAM.Text = suma_ram.ToString() + " MB";
         }
 
-        /*FUNCIÓN QUE FUE EXTRAÍDA DE UN PROGRAMA EXTERNO EN GITHUB, ENLACE PARA CONSULTA:      https://github.com/19AlexOrtegaRosas97/Administrador-de-tareas*/
+        /*FUNCIÓN QUE FUE EXTRAÍDA DE UN PROGRAMA EXTERNO EN GITHUB, ENLACE PARA CONSULTA:      https://github.com/19AlexOrtegaRosas97/Administrador-de-tareas [CARLOS CASTILLO]*/
 
         private string darFormato(string mb)
         {
@@ -144,7 +144,7 @@ namespace Admin_Tareas
             return "00.00";
         }
 
-        /*FILTRO DE PROCESOS, VÍDEO DE AYUDA:https://www.youtube.com/watch?v=XjNldd9ta90&ab_channel=Tasar%C4%B1mKodlama */
+        /*FILTRO DE PROCESOS, VÍDEO DE AYUDA:https://www.youtube.com/watch?v=XjNldd9ta90&ab_channel=Tasar%C4%B1mKodlama [SANTIAGO, NAYRE]*/
 
         DataTable tabla_procesos;
 
@@ -172,6 +172,11 @@ namespace Admin_Tareas
             DataView dtv = tabla_procesos.DefaultView;
             dtv.RowFilter = "nombre LIKE '%" + TxtBuscar.Text + "%'";
             Lista_Procesos.DataSource = dtv;
+        }
+
+        private void Tareas_Load(object sender, EventArgs e)
+        {
+
         }
 
         
