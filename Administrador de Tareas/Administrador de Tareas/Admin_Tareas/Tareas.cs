@@ -30,13 +30,21 @@ namespace Admin_Tareas
             lblRAM.Text = suma_ram.ToString() + " MB";
         }
 
-        //NAYRE
+        //NAYRE, SANTIAGO
 
         private void BtnDetener_Click(object sender, EventArgs e)
         {
             Process proceso = Process.GetProcessById(index_proceso);
-            proceso.Kill();
-            Listar_Procesos();
+
+            try
+            {
+                proceso.Kill();
+                Listar_Procesos();
+            }
+            catch (Exception ex)
+            {
+                Listar_Procesos();
+            }
 
         }
 
