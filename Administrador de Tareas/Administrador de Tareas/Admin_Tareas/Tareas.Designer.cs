@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tareas));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -115,6 +116,7 @@
             this.Lista_Procesos.Size = new System.Drawing.Size(684, 356);
             this.Lista_Procesos.TabIndex = 3;
             this.Lista_Procesos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_Procesos_CellClick);
+            this.Lista_Procesos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Lista_Procesos_CellMouseClick);
             // 
             // idProceso
             // 
@@ -201,7 +203,7 @@
             // 
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(150, 25);
-            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
+            //this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // toolStripSeparator1
             // 
@@ -229,12 +231,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "Tareas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Tareas";
-            this.Load += new System.EventHandler(this.Tareas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

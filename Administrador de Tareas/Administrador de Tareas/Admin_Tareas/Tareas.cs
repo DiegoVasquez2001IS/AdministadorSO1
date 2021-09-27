@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace Admin_Tareas
 {
@@ -29,40 +30,44 @@ namespace Admin_Tareas
             lblRAM.Text = suma_ram.ToString() + " MB";
         }
 
+        //NAYRE
+
         private void BtnDetener_Click(object sender, EventArgs e)
         {
+            Process proceso = Process.GetProcessById(index_proceso);
+            proceso.Kill();
+            Listar_Procesos();
 
         }
 
         int index_proceso = 0;
         private void BtnNuevoProceso_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(index_proceso.ToString());
+            String proceso_ejecutar = Microsoft.VisualBasic.Interaction.InputBox("Proceso a ejecutar", "WIN+R");
+
+            try
+            {
+                Process.Start(proceso_ejecutar);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         //OBTENEMOS LOS PROCESOS [DIEGO]
         private void Listar_Procesos()
         {
-            if (Lista_Procesos.Rows.Count >= 0)
-            {
-                Process[] lista_Procesos = Process.GetProcesses();
+            
+             Lista_Procesos.Rows.Clear();
 
-                foreach (Process proceso in lista_Procesos)
-                {
-                    Lista_Procesos.Rows.Add(proceso.Id, proceso.ProcessName, darFormato((proceso.PrivateMemorySize64 / 1024).ToString()));
-                }
-            }
-            else
-            {
-                Lista_Procesos.Rows.Clear();
+             Process[] lista_Procesos = Process.GetProcesses();
 
-                Process[] lista_Procesos = Process.GetProcesses();
-
-                foreach (Process proceso in lista_Procesos)
-                {
-                    Lista_Procesos.Rows.Add(proceso.Id, proceso.ProcessName, darFormato     ((proceso.PrivateMemorySize64 / 1024).ToString()));
-                }
-            }
+             foreach (Process proceso in lista_Procesos)
+             {
+                 Lista_Procesos.Rows.Add(proceso.Id, proceso.ProcessName, darFormato     ((proceso.PrivateMemorySize64 / 1024).ToString()));
+              }
+  
         }
 
         private void Lista_Procesos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -144,41 +149,44 @@ namespace Admin_Tareas
             return "00.00";
         }
 
-        /*FILTRO DE PROCESOS, VÍDEO DE AYUDA:https://www.youtube.com/watch?v=XjNldd9ta90&ab_channel=Tasar%C4%B1mKodlama [SANTIAGO, NAYRE]*/
+        /*FILTRO DE PROCESOS, Encargado: [Diego]*/
 
-        DataTable tabla_procesos;
+     
 
-        private void llenado_tabla()
+        /*private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
-            tabla_procesos = new DataTable();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = Lista_Procesos.DataSource;
 
-            tabla_procesos.Columns.Add("id", typeof(int));
-            tabla_procesos.Columns.Add("nombre", typeof(string));
-            tabla_procesos.Columns.Add("memoria", typeof(double));
+            bs.Filter = "nombreProceso like '%" + TxtBuscar.Text + "%'";
+            Lista_Procesos.DataSource = bs;
 
-            foreach (DataGridViewRow row_data in Lista_Procesos.Rows)
+            if (TxtBuscar.Text == "")
             {
-                DataRow dr = tabla_procesos.NewRow();
-                dr["id"] = row_data.Cells[0].Value;
-                dr["nombre"] = row_data.Cells[1].Value;
-                dr["memoria"] = row_data.Cells[2].Value;
+
+                DataTable tabla_relleno = new DataTable();
+                tabla_relleno.Columns.Add("idProceso");
+                tabla_relleno.Columns.Add("nombreProceso");
+                tabla_relleno.Columns.Add("MemoriaRAM");
+
+                Process[] lista_Procesos = Process.GetProcesses();
+
+                foreach (Process proceso in lista_Procesos)
+                {
+                    tabla_relleno.Rows.Add(proceso.Id, proceso.ProcessName, darFormato((proceso.PrivateMemorySize64 / 1024).ToString()));
+                }
+                Lista_Procesos.DataSource = tabla_relleno;
+            }
+
+        }*/
+
+
+        private void Lista_Procesos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                index_proceso = Convert.ToInt16(Lista_Procesos[0, e.RowIndex].Value);
             }
         }
-
-        private void TxtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            llenado_tabla();
-
-            DataView dtv = tabla_procesos.DefaultView;
-            dtv.RowFilter = "nombre LIKE '%" + TxtBuscar.Text + "%'";
-            Lista_Procesos.DataSource = dtv;
-        }
-
-        private void Tareas_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }
